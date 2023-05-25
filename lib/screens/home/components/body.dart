@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:project_management/config/colors.dart';
@@ -53,7 +54,7 @@ class _BodyState extends State<Body> {
         child:
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           _buildHeader(),
-           SizedBox(height: getProportionateScreenWidth(24)),
+          SizedBox(height: getProportionateScreenWidth(24)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -125,7 +126,7 @@ class _BodyState extends State<Body> {
               )
             ],
           ),
-         SizedBox(height: getProportionateScreenWidth(12)),
+          SizedBox(height: getProportionateScreenWidth(12)),
           ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
@@ -174,8 +175,8 @@ class _BodyState extends State<Body> {
   Widget buildStackedImages({
     TextDirection direction = TextDirection.rtl,
   }) {
-    final double size = 48;
-    final double xShift = 12;
+    const double size = 48;
+    const double xShift = 12;
     final urlImages = [
       'https://images.unsplash.com/photo-1616766098956-c81f12114571?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
       'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=633&q=80',
@@ -194,15 +195,17 @@ class _BodyState extends State<Body> {
   }
 
   Widget buildImage(String urlImage) {
-    final double borderSize = 2;
+    const double borderSize = 2;
 
     return ClipOval(
       child: Container(
-        padding: EdgeInsets.all(borderSize),
+        padding: const EdgeInsets.all(borderSize),
         color: Colors.white,
         child: ClipOval(
-          child: Image.network(
-            urlImage,
+          child: CachedNetworkImage(
+            imageUrl: urlImage,
+            placeholder: (context, url) =>const Center(child:  CircularProgressIndicator()),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
             fit: BoxFit.cover,
           ),
         ),

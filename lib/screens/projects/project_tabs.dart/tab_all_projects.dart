@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:project_management/screens/projects/project_tabs.dart/components/list_all_projects.dart';
@@ -121,10 +122,10 @@ class _TabAllProjectsState extends State<TabAllProjects> {
             color: ktextColorGrey,
           ),
           child: const Center(
-            child:Icon(
-            Icons.add,
-            color: kColorWhite,
-          ),
+            child: Icon(
+              Icons.add,
+              color: kColorWhite,
+            ),
           ),
         ),
       ],
@@ -141,8 +142,10 @@ class _TabAllProjectsState extends State<TabAllProjects> {
         padding: const EdgeInsets.all(borderSize),
         color: Colors.white,
         child: ClipOval(
-          child: Image.network(
-            urlImage,
+          child: CachedNetworkImage(
+            imageUrl: urlImage,
+            placeholder: (context, url) =>const  Center(child: CircularProgressIndicator()),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
             fit: BoxFit.cover,
           ),
         ),
