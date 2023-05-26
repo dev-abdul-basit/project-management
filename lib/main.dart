@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_management/config/appstrings.dart';
 import 'package:project_management/screens/search/searchscren.dart';
 
 import 'config/colors.dart';
@@ -25,7 +26,7 @@ class _MyAppState extends State<MyApp> {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: MaterialApp(
-        title: 'Project Management',
+        title: AppStrings.title,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             brightness: Brightness.dark,

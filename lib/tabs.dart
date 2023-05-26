@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -11,7 +9,6 @@ import 'package:project_management/screens/settings/settingsscreen.dart';
 
 import 'config/assets.dart';
 import 'config/colors.dart';
-
 
 class BottomMenuTabs extends StatefulWidget {
   const BottomMenuTabs({Key? key}) : super(key: key);
@@ -68,36 +65,36 @@ class _BottomMenuTabsState extends State<BottomMenuTabs> {
                   Tab(
                     icon: _currentIndex == 0
                         ? SvgPicture.asset(
-                          AppAssets.menuHome,
-                          colorFilter: const ColorFilter.mode(
-                            kcolorBlue,
-                            BlendMode.srcIn,
-                          ),
-                        )
+                            AppAssets.menuHome,
+                            colorFilter: const ColorFilter.mode(
+                              kcolorBlue,
+                              BlendMode.srcIn,
+                            ),
+                          )
                         : SvgPicture.asset(
-                          AppAssets.menuHome,
-                          colorFilter: const ColorFilter.mode(
-                            kMenuInacativeColor,
-                            BlendMode.srcIn,
+                            AppAssets.menuHome,
+                            colorFilter: const ColorFilter.mode(
+                              kMenuInacativeColor,
+                              BlendMode.srcIn,
+                            ),
                           ),
-                        ),
                   ),
                   Tab(
                     icon: _currentIndex == 1
                         ? SvgPicture.asset(
-                          AppAssets.menuSearch,
-                          colorFilter: const ColorFilter.mode(
-                            kcolorBlue,
-                            BlendMode.srcIn,
-                          ),
-                        )
+                            AppAssets.menuSearch,
+                            colorFilter: const ColorFilter.mode(
+                              kcolorBlue,
+                              BlendMode.srcIn,
+                            ),
+                          )
                         : SvgPicture.asset(
-                          AppAssets.menuSearch,
-                          colorFilter: const ColorFilter.mode(
-                            kMenuInacativeColor,
-                            BlendMode.srcIn,
+                            AppAssets.menuSearch,
+                            colorFilter: const ColorFilter.mode(
+                              kMenuInacativeColor,
+                              BlendMode.srcIn,
+                            ),
                           ),
-                        ),
                   ),
                   const SizedBox(
                     // Custom widget for spacing in center
@@ -107,43 +104,43 @@ class _BottomMenuTabsState extends State<BottomMenuTabs> {
                   Tab(
                     icon: _currentIndex == 2
                         ? SvgPicture.asset(
-                          AppAssets.menuCard,
-                          colorFilter: const ColorFilter.mode(
-                            kcolorBlue,
-                            BlendMode.srcIn,
-                          ),
-                        )
+                            AppAssets.menuCard,
+                            colorFilter: const ColorFilter.mode(
+                              kcolorBlue,
+                              BlendMode.srcIn,
+                            ),
+                          )
                         : SvgPicture.asset(
-                          AppAssets.menuCard,
-                          colorFilter: const ColorFilter.mode(
-                            kMenuInacativeColor,
-                            BlendMode.srcIn,
+                            AppAssets.menuCard,
+                            colorFilter: const ColorFilter.mode(
+                              kMenuInacativeColor,
+                              BlendMode.srcIn,
+                            ),
                           ),
-                        ),
                   ),
                   Tab(
                     icon: _currentIndex == 3
                         ? SvgPicture.asset(
-                          AppAssets.menuSettings,
-                          colorFilter: const ColorFilter.mode(
-                            kcolorBlue,
-                            BlendMode.srcIn,
-                          ),
-                        )
+                            AppAssets.menuSettings,
+                            colorFilter: const ColorFilter.mode(
+                              kcolorBlue,
+                              BlendMode.srcIn,
+                            ),
+                          )
                         : SvgPicture.asset(
-                          AppAssets.menuSettings,
-                          colorFilter: const ColorFilter.mode(
-                            kMenuInacativeColor,
-                            BlendMode.srcIn,
+                            AppAssets.menuSettings,
+                            colorFilter: const ColorFilter.mode(
+                              kMenuInacativeColor,
+                              BlendMode.srcIn,
+                            ),
                           ),
-                        ),
                   ),
                 ],
               )),
             ),
           ),
         ),
-        body:  TabBarView(
+        body: TabBarView(
           physics: const NeverScrollableScrollPhysics(),
           children: [
             const HomeScreen(),

@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:project_management/config/appstrings.dart';
+import 'package:project_management/config/assets.dart';
 
 import 'package:project_management/config/colors.dart';
 import 'package:project_management/config/size_config.dart';
@@ -54,134 +56,171 @@ class _BodyState extends State<Body> {
         child:
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           _buildHeader(),
-          SizedBox(height: getProportionateScreenWidth(24)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Expanded(
-                child: CustomContainer(
-                  backgroundColor: kcolorBlue,
-                  icon: Icons.home,
-                  text: 'Home',
-                  onPressed: () {
-                    // Handle container click
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ProjectsScreen()));
-                  },
-                ),
-              ),
-              SizedBox(width: getProportionateScreenWidth(12)),
-              Expanded(
-                child: CustomContainer(
-                  backgroundColor: kcolorGreen,
-                  icon: Icons.settings,
-                  text: 'Settings',
-                  onPressed: () {
-                    // Handle container click
-                  },
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: getProportionateScreenWidth(12)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Expanded(
-                child: CustomContainer(
-                  backgroundColor: kcolorBlueLight,
-                  icon: Icons.info,
-                  text: 'Info',
-                  onPressed: () {
-                    // Handle container click
-                  },
-                ),
-              ),
-              SizedBox(width: getProportionateScreenWidth(12)),
-              Expanded(
-                child: CustomContainer(
-                  backgroundColor: kcolorVilot,
-                  icon: Icons.person,
-                  text: 'Profile',
-                  onPressed: () {
-                    // Handle container click
-                  },
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: getProportionateScreenWidth(24)),
-          Row(
+          _buildSubHeader(),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
+            children: [
               Text(
-                'Add Task',
+                AppStrings.addTask,
                 style: headingStyleLargeTwo,
               ),
               Text(
-                'All Tasks',
+                AppStrings.allTask,
                 style: headingStyleSmall,
               )
             ],
           ),
           SizedBox(height: getProportionateScreenWidth(12)),
-          ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: taskData.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.0),
-                      color: kColorWhite),
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                    child: TasksList(
-                      isChecked: taskData[index]['isChecked'],
-                      labelText: taskData[index]['title'],
-                      secondChild: buildStackedImages(),
-                      trailingArrow: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          color: ktextColorGrey,
-                          size: 20,
-                        ),
-                      ),
-                      onChanged: (bool? value) {
-                        // Handle checkbox state change
-                        setState(() {
-                          taskData[index]['isChecked'] = value;
-                        });
-                      },
-                      progressColor: taskData[index]['color'],
-                      percent: taskData[index]['percent'],
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
+          _buildTasks(),
         ]),
       ),
     );
   }
 
+//HomeHeader
+  Widget _buildHeader() {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      const Text(
+        AppStrings.today,
+        style: headingStyleXL,
+      ),
+      const SizedBox(
+        height: 3,
+      ),
+      Row(
+        children: [
+          const Icon(
+            Icons.calendar_today,
+            color: kcolorBlue,
+          ),
+          Text(
+            AppStrings.date,
+            style: headingStyleSmall.copyWith(
+                color: ktextColorBlack.withOpacity(0.7)),
+          )
+        ],
+      ),
+    ]);
+  }
+
+//Sub Header
+  Widget _buildSubHeader() {
+    return Column(children: [
+      SizedBox(height: getProportionateScreenWidth(24)),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Expanded(
+            child: CustomContainer(
+              backgroundColor: kcolorBlue,
+              icon: Icons.refresh_rounded,
+              text: AppStrings.ongoing,
+              onPressed: () {
+                // Handle container click
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProjectsScreen()));
+              },
+            ),
+          ),
+          SizedBox(width: getProportionateScreenWidth(12)),
+          Expanded(
+            child: CustomContainer(
+              backgroundColor: kcolorGreen,
+              icon: Icons.access_time_outlined,
+              text: AppStrings.inProgress,
+              onPressed: () {
+                // Handle container click
+              },
+            ),
+          ),
+        ],
+      ),
+      SizedBox(height: getProportionateScreenWidth(12)),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Expanded(
+            child: CustomContainer(
+              backgroundColor: kcolorBlueLight,
+              icon: Icons.task_outlined,
+              text: AppStrings.completed,
+              onPressed: () {
+                // Handle container click
+              },
+            ),
+          ),
+          SizedBox(width: getProportionateScreenWidth(12)),
+          Expanded(
+            child: CustomContainer(
+              backgroundColor: kcolorVilot,
+              icon: Icons.cancel_presentation_outlined,
+              text: AppStrings.cancel,
+              onPressed: () {
+                // Handle container click
+              },
+            ),
+          ),
+        ],
+      ),
+      SizedBox(height: getProportionateScreenWidth(24)),
+    ]);
+  }
+
+//Tasks Lists
+  Widget _buildTasks() {
+    return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: taskData.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5.0), color: kColorWhite),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+              child: TasksList(
+                isChecked: taskData[index]['isChecked'],
+                labelText: taskData[index]['title'],
+                secondChild: buildStackedImages(),
+                trailingArrow: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: ktextColorGrey,
+                    size: 20,
+                  ),
+                ),
+                onChanged: (bool? value) {
+                  // Handle checkbox state change
+                  setState(() {
+                    taskData[index]['isChecked'] = value;
+                  });
+                },
+                progressColor: taskData[index]['color'],
+                percent: taskData[index]['percent'],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+//Stacked Images
   Widget buildStackedImages({
     TextDirection direction = TextDirection.rtl,
   }) {
     const double size = 48;
     const double xShift = 12;
     final urlImages = [
-      'https://images.unsplash.com/photo-1616766098956-c81f12114571?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-      'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=633&q=80',
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-      'https://images.unsplash.com/photo-1616766098956-c81f12114571?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+      AppAssets.imagUrl1,
+      AppAssets.imagUrl2,
+      AppAssets.imagUrl3,
+      AppAssets.imagUrl4,
     ];
 
     final items = urlImages.map((urlImage) => buildImage(urlImage)).toList();
@@ -204,37 +243,13 @@ class _BodyState extends State<Body> {
         child: ClipOval(
           child: CachedNetworkImage(
             imageUrl: urlImage,
-            placeholder: (context, url) =>const Center(child:  CircularProgressIndicator()),
+            placeholder: (context, url) =>
+                const Center(child: CircularProgressIndicator()),
             errorWidget: (context, url, error) => const Icon(Icons.error),
             fit: BoxFit.cover,
           ),
         ),
       ),
     );
-  }
-
-  Widget _buildHeader() {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const Text(
-        'Today',
-        style: headingStyleXL,
-      ),
-      const SizedBox(
-        height: 3,
-      ),
-      Row(
-        children: [
-          const Icon(
-            Icons.calendar_today,
-            color: kcolorBlue,
-          ),
-          Text(
-            ' Apr 26, 2023',
-            style: headingStyleSmall.copyWith(
-                color: ktextColorBlack.withOpacity(0.7)),
-          )
-        ],
-      ),
-    ]);
   }
 }

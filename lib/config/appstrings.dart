@@ -1,20 +1,24 @@
 class AppStrings {
-  //Home
-  static const String title = "title";
+  static const String title = "Project Management";
+  //menu
+  static const String menuHome = "Home";
+  static const String menuChat = "Chat";
+  static const String menuTasks = "Tasks";
+  static const String menuSetting = "Settings";
+  //appbar
   static const String home = "Home";
-  static const String topTen = "価格上昇ランキング TOP10";
-  static const String search = "検索";
-  static const String cardName = "カード名: ";
-  static const String pack = "収録パック: ";
-  static const String illustrator = "イラストレーター: ";
-  static const String position = "位";
+  static const String projects = "Projects";
 
-  //Search Page
+  //HomeScreenString
+  static const String today = "Today";
+  static const String date = "Apr 26, 2023";
+  static const String ongoing = "Ongoing";
+  static const String inProgress = "In Progress";
+  static const String completed = "Completed";
+   static const String cancel = "Cancel";
+  static const String addTask = "Add Task";
+  static const String allTask = "All Task";
 
-  static const String searchMore = "Search more";
-  static const String settings = "Settings";
-  static const String sortBy = "Sort by";
-  static const String searchHint = "Card / Included Packs / Illustrator Name";
-  static const String currentPrice = "(Current\nprice)";
-  static const String beforePrice = "(Price before\nit goes up)";
+  //Porjects Screen
+  static const String all = "All"; //tab bar menu
 }

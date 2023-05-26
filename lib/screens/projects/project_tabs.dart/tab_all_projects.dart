@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:project_management/screens/projects/project_tabs.dart/components/list_all_projects.dart';
 
 import '../../../components/stacked_images.dart';
+import '../../../config/assets.dart';
 import '../../../config/colors.dart';
 
 class TabAllProjects extends StatefulWidget {
@@ -97,16 +98,17 @@ class _TabAllProjectsState extends State<TabAllProjects> {
     );
   }
 
+//Stacked Images with + indicator
   Widget buildStackedImages({
     TextDirection direction = TextDirection.rtl,
   }) {
     const double size = 48;
     const double xShift = 12;
     final urlImages = [
-      'https://images.unsplash.com/photo-1616766098956-c81f12114571?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-      'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=633&q=80',
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-      'https://images.unsplash.com/photo-1616766098956-c81f12114571?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+      AppAssets.imagUrl1,
+      AppAssets.imagUrl2,
+      AppAssets.imagUrl3,
+      AppAssets.imagUrl4,
     ];
 
     final items = urlImages.map((urlImage) => buildImage(urlImage)).toList();
@@ -144,7 +146,8 @@ class _TabAllProjectsState extends State<TabAllProjects> {
         child: ClipOval(
           child: CachedNetworkImage(
             imageUrl: urlImage,
-            placeholder: (context, url) =>const  Center(child: CircularProgressIndicator()),
+            placeholder: (context, url) =>
+                const Center(child: CircularProgressIndicator()),
             errorWidget: (context, url, error) => const Icon(Icons.error),
             fit: BoxFit.cover,
           ),

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:project_management/config/assets.dart';
 import 'package:project_management/screens/home/components/body.dart';
 
 import '../../components/app_drawer.dart';
@@ -27,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     SizeConfig().init(context);
 
     return Scaffold(
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       key: _scaffoldKey,
       drawerEnableOpenDragGesture: false,
       appBar: _buildAppbar(),
@@ -55,12 +56,12 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       actions: [
         Padding(
-          padding:const EdgeInsets.only(right: 12.0),
+          padding: const EdgeInsets.only(right: 12.0),
           child: CachedNetworkImage(
-            imageUrl:
-                'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600',
-            placeholder: (context, url) =>const Center(child: CircularProgressIndicator()),
-            errorWidget: (context, url, error) =>const Icon(Icons.error),
+            imageUrl: AppAssets.avatarUrl,
+            placeholder: (context, url) =>
+                const Center(child: CircularProgressIndicator()),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
             imageBuilder: (context, imageProvider) => CircleAvatar(
               backgroundImage: imageProvider,
               radius: 20,

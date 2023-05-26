@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_management/config/appstrings.dart';
 
 import 'package:project_management/config/colors.dart';
 
@@ -48,7 +49,7 @@ class _ProjectsScreenState extends State<ProjectsScreen>
           },
         ),
         title: const Text(
-          'Projects',
+          AppStrings.projects,
           style: textStyleAppBarTitle,
         ),
         actions: [
@@ -88,9 +89,9 @@ class _ProjectsScreenState extends State<ProjectsScreen>
                   labelColor: kcolorBlue,
                   unselectedLabelColor: Colors.black,
                   tabs: const [
-                    Tab(text: 'Ongoing'),
-                    Tab(text: 'All'),
-                    Tab(text: 'Completed'),
+                    Tab(text: AppStrings.ongoing),
+                    Tab(text: AppStrings.all),
+                    Tab(text: AppStrings.completed),
                   ],
                 ),
               ),
