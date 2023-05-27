@@ -1,16 +1,19 @@
-# project_management
+# Project Management - Flutter UI 
 
-A new Flutter project.
+This is a project management app made with Flutter. Its a conversion from Figma design to Flutter UI
 
-## Getting Started
+## [Watch it on YouTube](https://youtube.com/shorts/7Gg7qkT7aBo?feature=share1)
 
-This project is a starting point for a Flutter application.
+### Video Preview of Final UI
 
-A few resources to get you started if this is your first Flutter project:
+![Preview](intro.gif)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Photos
+![Preview](1.png)
+![Preview](2.png)
+<!-- ![Preview](3.png)
+![Preview](4.png)
+![Preview](5.png)
+![Preview](6.png)
+![Preview](7.png) -->
+Thanks for your love and support 🙏 
