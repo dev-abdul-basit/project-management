@@ -102,7 +102,7 @@ class _BottomMenuTabsState extends State<BottomMenuTabs> {
                         48, // Adjust the width according to your desired spacing
                   ),
                   Tab(
-                    icon: _currentIndex == 2
+                    icon: _currentIndex == 3
                         ? SvgPicture.asset(
                             AppAssets.menuCard,
                             colorFilter: const ColorFilter.mode(
@@ -119,7 +119,7 @@ class _BottomMenuTabsState extends State<BottomMenuTabs> {
                           ),
                   ),
                   Tab(
-                    icon: _currentIndex == 3
+                    icon: _currentIndex == 4
                         ? SvgPicture.asset(
                             AppAssets.menuSettings,
                             colorFilter: const ColorFilter.mode(
@@ -145,8 +145,8 @@ class _BottomMenuTabsState extends State<BottomMenuTabs> {
           children: [
             const HomeScreen(),
             const SearchScreen(),
-            const ChatScreen(),
             Container(),
+            const ChatScreen(),
             const SettingsScreen(),
           ],
         ),

@@ -3,7 +3,7 @@ class AppStrings {
   //menu
   static const String menuHome = "Home";
   static const String menuChat = "Chat";
-  static const String menuTasks = "Tasks";
+  static const String menuSearch = "Search";
   static const String menuSetting = "Settings";
   //appbar
   static const String home = "Home";
@@ -15,7 +15,7 @@ class AppStrings {
   static const String ongoing = "Ongoing";
   static const String inProgress = "In Progress";
   static const String completed = "Completed";
-   static const String cancel = "Cancel";
+  static const String cancel = "Cancel";
   static const String addTask = "Add Task";
   static const String allTask = "All Task";
 
