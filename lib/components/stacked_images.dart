@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class StackedWidgets extends StatelessWidget {
   final List<Widget> items;
   final TextDirection direction;
@@ -19,7 +20,6 @@ class StackedWidgets extends StatelessWidget {
         .asMap()
         .map((index, item) {
           final left = size - xShift;
-
           final value = Container(
             width: size,
             height: size,
